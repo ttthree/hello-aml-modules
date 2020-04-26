@@ -1,7 +1,7 @@
 moduleIdentifier:
   namespace: microsoft.com/aml/samples
   moduleName: "MPI Train"
-  moduleVersion: 0.0.5
+  moduleVersion: 0.0.6
 type: Mpi
 inputs:
 - name: training_data
@@ -43,3 +43,11 @@ implementation:
       --learning_rate, {inputValue: learning_rate},
       --model_output, {outputPath: model_output},
     ]
+runConfig:
+  nodeCount:
+    type: Integer
+    default: 2
+    min: 1
+  processCountPerNode:
+    type: Integer
+    default: 2
