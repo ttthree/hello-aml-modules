@@ -3,7 +3,7 @@ description: Combines two TSVs by performing a join on the key fields.
 amlModuleIdentifier:
   namespace: microsoft.com/bing
   moduleName: ejoin
-  moduleVersion: 0.0.5
+  moduleVersion: 0.0.6
 metadata:
   annotations:
     labels:
