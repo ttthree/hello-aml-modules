@@ -1,0 +1,31 @@
+moduleIdentifier:
+  namespace: microsoft.com/aml/samples
+  moduleName: "1 in 1 out"
+  moduleVersion: 0.0.1
+inputs:
+- name: input1
+  type: AnyFile
+  label: 'Input #1'
+outputs:
+- name: output1
+  type: AnyFile
+  label: 'Output #1'
+implementation:
+  container:
+    amlEnvironment:
+      python:
+        condaDependencies:
+          name: project_environment
+          channels:
+            - defaults
+          dependencies:
+            - python=3.6.8
+            - pip:
+              - azureml-defaults
+    command: [python, noop.py]
+    args: [
+      --numinputs, $NUM_INPUTS,
+      --numoutputs, $NUM_OUTPUTS,
+      {inputPath: input1},
+      {outputPath: output1}
+    ]     
