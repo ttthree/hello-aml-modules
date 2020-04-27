@@ -24,8 +24,8 @@ implementation:
               - azureml-defaults
     command: [python, noop.py]
     args: [
-      --numinputs, $NUM_INPUTS,
-      --numoutputs, $NUM_OUTPUTS,
+      --numinputs, 1,
+      --numoutputs, 1,
       {inputPath: input1},
       {outputPath: output1}
     ]     
