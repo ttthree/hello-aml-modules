@@ -1,7 +1,7 @@
 moduleIdentifier:
   namespace: microsoft.com/aml/samples
   moduleName: "1 in 1 out"
-  moduleVersion: 0.0.2
+  moduleVersion: 0.0.3
 inputs:
 - name: input1
   type: AnyFile
