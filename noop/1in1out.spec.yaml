@@ -25,7 +25,7 @@ implementation:
     command: [python, noop.py]
     args: [
       --numinputs, '1',
-      --numoutputs, '1', --paths
+      --numoutputs, '1', --paths,
       {inputPath: input1},
       {outputPath: output1}
     ]     
