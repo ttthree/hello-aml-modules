@@ -4,6 +4,8 @@ import horovod.torch as hvd
 import socket
 import argparse
 import pathlib
+from azureml.core.run import Run
+import numpy as np
 
 print("hostname: ", socket.gethostname(), " host ip: ", socket.gethostbyname(socket.gethostname()))
 
@@ -25,3 +27,9 @@ with open(args.model_output, 'w') as file:
     for line in lines:
         print(line)
         file.write(line + "\n")
+
+# Log a few metrics
+run = Run.get_context()
+
+for accuracy in np.arange(0.0, 1.0, 0.01):
+    run.log('accuracy', accuracy)

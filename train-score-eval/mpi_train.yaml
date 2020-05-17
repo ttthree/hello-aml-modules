@@ -1,8 +1,8 @@
-moduleIdentifier:
+amlModuleIdentifier:
   namespace: microsoft.com/aml/samples
   moduleName: "MPI Train"
   moduleVersion: 0.0.6
-type: Mpi
+jobType: Mpi
 inputs:
 - name: training_data
   type:
