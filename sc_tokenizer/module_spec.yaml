@@ -1,0 +1,60 @@
+amlModuleIdentifier:
+  namespace: microsoft.com/aml/sc
+  moduleName: "Tokenizer"
+  moduleVersion: 0.0.10
+jobType: parallel
+description: Three different tokenizers, 1) TrainingTokenizer -- mimics the tokenization method used for tokenizing words for training LM in QAS; 2)InferenceTokenizer -- mimics the tokenization method used for tokenizing words for trie lookup; 3)SpacyTokenizer -- uses spaCy's default word/sentence tokenizer
+metadata:
+  annotations:
+    tags: ['office', 'nlp', 'sc']
+inputs:
+- name: input_file_path
+  type: AnyDirectory
+  description: 'Input text file path'
+- name: input_is_tsv
+  type: Boolean
+  default: False
+  optional: True
+  description: 'bool determining whether to use tsv related options'
+- name: delimiter
+  type: String
+  optional: True
+  description: 'optional, delimiter to use if parsing a tsv type file'
+- name: ignore_cols
+  type: String
+  optional: True
+  description: 'indices of columns to ignore if parsing a tsv'
+- name: mode
+  type: Enum
+  options: ['train', 'inference', 'spacy']
+  default: 'train'
+  description: 'Tokenizer to use [train, inference, spacy]'
+- name: type
+  type: Enum
+  options: ['word', 'sentence']
+  default: 'word'
+  description: 'Whether to use word tokenizer or sentence tokenizer'
+outputs:
+- name: output_dir_path
+  type: AnyDirectory
+  description: 'Output file directory path'
+implementation:
+  parallel:
+    amlEnvironment:
+      python:
+        condaDependenciesFile: conda_dependency.yaml
+    additionalIncludes: ../sc_utils
+    inputData: input_file_path
+    outputData: output_dir_path
+    entry: tokenizer.py
+    args: [
+      [--input_is_tsv, {inputValue: input_is_tsv}],
+      [--delimiter, {inputValue: delimiter}],
+      [--ignore_cols, {inputValue: ignore_cols}],
+      --mode, {inputValue: mode},
+      --type, {inputValue: type}
+    ]
+
+
+
+

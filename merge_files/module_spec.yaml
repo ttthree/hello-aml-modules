@@ -1,0 +1,36 @@
+amlModuleIdentifier:
+  moduleName: Merge every n files together
+  moduleVersion: 0.0.1
+  namespace: microsoft.com/office/smart-compose
+metadata:
+  tags:[Office, SmartReply, Compliance]
+inputs:
+- name: InputFolder
+  type: AnyDirectory
+- name: merge_count
+  type: Int
+  default: 100
+  optional: true
+outputs:
+- name: OutputFolder
+  type: AnyDirectory
+implementation:
+  container:
+    amlEnvironment:
+      python:
+        condaDependencies:
+          channels:
+          - defaults
+          dependencies:
+          - python=3.6.8
+          - pip:
+            - azureml-defaults
+          name: project_environment
+    command:
+    - python
+    - merge.py
+    args:[
+        --input_folder, {inputPath: InputFolder},
+        --output_folder, {outputPath: OutputFolder},
+        --merge_count, {inputValue: merge_count},
+    ]

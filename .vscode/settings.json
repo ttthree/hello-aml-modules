@@ -1,0 +1,9 @@
+{
+    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\envs\\amlenv\\python.exe",
+    "python.dataScience.jupyterServerURI": "http://amlnb.eastus.cloudapp.azure.com/user/greenview/?token=a99460cd49ee4399a4dfc0e39d5bf20e",
+    "python.terminal.activateEnvironment": false,
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}/additional-includes/utils;${workspaceFolder}/sc_utils;${workspaceFolder}"
+    },
+    "python.envFile": "${workspaceFolder}/.vscode/.env"
+}

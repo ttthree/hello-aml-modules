@@ -1,8 +1,9 @@
 amlModuleIdentifier:
   namespace: microsoft.com/aml/samples
   moduleName: "MPI Train"
-  moduleVersion: 0.0.6
+  moduleVersion: 0.0.5
 jobType: Mpi
+description: A dummy module to show how to describe MPI module with custom module spec.
 inputs:
 - name: training_data
   type:
@@ -43,11 +44,3 @@ implementation:
       --learning_rate, {inputValue: learning_rate},
       --model_output, {outputPath: model_output},
     ]
-runConfig:
-  nodeCount:
-    type: Integer
-    default: 2
-    min: 1
-  processCountPerNode:
-    type: Integer
-    default: 2
