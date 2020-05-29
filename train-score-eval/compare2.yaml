@@ -7,19 +7,15 @@ inputs:
 - name: model1
   type: AnyFile
   label: 'The first model to compare with'
-  optional: True
 - name: eval_result1
   type: AnyFile
   label: 'The evaluation result of first model'
-  optional: True
 - name: model2
   type: AnyFile
   label: 'The second model to compare'
-  optional: True
 - name: eval_result2
   type: AnyFile
   label: 'The evaluation result of second model'
-  optional: True
 outputs:
 - name: best_model
   type: AnyFile

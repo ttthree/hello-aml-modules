@@ -6,6 +6,7 @@ import argparse
 import pathlib
 from azureml.core.run import Run
 import numpy as np
+import time
 
 print("hostname: ", socket.gethostname(), " host ip: ", socket.gethostbyname(socket.gethostname()))
 
