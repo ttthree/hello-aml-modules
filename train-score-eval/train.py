@@ -28,7 +28,7 @@ for accuracy in np.arange(0.0, 1.0, 0.01):
 
 # Eating memory gradually for some time ...
 mem = []
-for i in range(1, 100):
+for i in range(1, 300):
     time.sleep(1)
     mem.append(' ' * 512 * 1024)
     print(len(mem * 512 * 1024), ' bytes used.')

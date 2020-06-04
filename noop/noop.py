@@ -1,5 +1,6 @@
 from argparse import ArgumentParser
 import pathlib
+import time
 
 parser = ArgumentParser()
 parser.add_argument("--numinputs", type=int, help="# of inputs")
@@ -24,3 +25,10 @@ for i in range(args.numinputs, total):
         for line in lines:
             print(line)
             file.write(line + "\n")
+
+# Eating memory gradually for some time ...
+mem = []
+for i in range(1, 100):
+    time.sleep(1)
+    mem.append(' ' * 512 * 1024)
+    print(len(mem * 512 * 1024), ' bytes used.')

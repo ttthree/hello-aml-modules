@@ -1,4 +1,4 @@
-moduleIdentifier:
+amlModuleIdentifier:
   namespace: microsoft.com/aml/samples
   moduleName: "1 in 1 out"
   moduleVersion: 0.0.3
