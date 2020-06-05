@@ -1,0 +1,31 @@
+#  This is an auto generated module spec yaml file.
+#  For more details, please refer to https://github.com/Azure/AzureML-Modules/tree/master/specs
+amlModuleIdentifier:
+  moduleName: multiply
+  moduleVersion: 0.0.1
+jobType: basic
+metadata:
+  annotations: {}
+inputs:
+- name: Left
+  type: AnyDirectory
+  optional: true
+- name: Right
+  type: AnyDirectory
+  optional: true
+outputs:
+- name: Output
+  type: AnyDirectory
+implementation:
+  container:
+    amlEnvironment:
+      python:
+        condaDependenciesFile: conda.yaml
+    command:
+    - python
+    - multiply.py
+    args:
+    - [--left, {inputPath: Left}]
+    - [--right, {inputPath: Right}]
+    - --output
+    - outputPath: Output
