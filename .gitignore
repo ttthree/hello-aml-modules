@@ -1,2 +1,5 @@
 .ipynb_checkpoints/pipeline-checkpoint.ipynb
-.vscode/settings.json
+**/.azureml/**
+**/.vscode/**
+**/.config/**
+**/__pycache__

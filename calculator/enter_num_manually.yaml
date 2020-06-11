@@ -1,17 +1,19 @@
 #  This is an auto generated module spec yaml file.
 #  For more details, please refer to https://github.com/Azure/AzureML-Modules/tree/master/specs
 amlModuleIdentifier:
-  moduleName: multiply
+  moduleName: enter_num_manually
   moduleVersion: 0.0.1
+jobType: basic
 metadata:
   annotations: {}
+description: Put a number in parameter and this module will convert it to a file
 inputs:
-- name: Left
-  type: AnyDirectory
-- name: Right
-  type: AnyDirectory
+- name: Num
+  type: String
+  default: '0'
+  optional: true
 outputs:
-- name: Result
+- name: Output
   type: AnyDirectory
 implementation:
   container:
@@ -20,11 +22,8 @@ implementation:
         condaDependenciesFile: conda.yaml
     command:
     - python
-    - multiply.py
+    - enter_num_manually.py
     args:
-    - --left
-    - inputPath: Left
-    - --right
-    - inputPath: Right
-    - --result
-    - outputPath: Result
+    - [--num, {inputValue: Num}]
+    - --output
+    - outputPath: Output
