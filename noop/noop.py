@@ -21,14 +21,20 @@ for i in range(0, args.numinputs):
 
 for i in range(args.numinputs, total):
     pathlib.Path(args.paths[i]).parent.absolute().mkdir(parents=True, exist_ok=True)
-    with open(args.paths[i], 'w') as file:
+    output_path = None
+    if pathlib.Path(args.paths[i]).is_dir():
+        output_path = args.paths[i] + '/output'
+    else:
+        output_path = args.paths[i]
+
+    with open(output_path, 'w') as file:
         for line in lines:
             print(line)
             file.write(line + "\n")
 
 # Eating memory gradually for some time ...
-mem = []
-for i in range(1, 100):
-    time.sleep(1)
-    mem.append(' ' * 512 * 1024)
-    print(len(mem * 512 * 1024), ' bytes used.')
+#mem = []
+#for i in range(1, 100):
+#    time.sleep(1)
+#    mem.append(' ' * 512 * 1024)
+#    print(len(mem * 512 * 1024), ' bytes used.')

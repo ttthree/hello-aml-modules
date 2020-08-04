@@ -10,7 +10,7 @@ args = parser.parse_args()
 lines = [f'Scoring result path: {args.scoring_result}', f'Evaluation output path: {args.eval_output}']
 
 pathlib.Path(args.eval_output).parent.absolute().mkdir(parents=True, exist_ok=True)
-with open(args.eval_output, 'w') as file:
+with open(args.eval_output + '/output', 'w') as file:
     for line in lines:
         print(line)
         file.write(line + "\n")

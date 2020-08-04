@@ -1,6 +1,6 @@
 amlModuleIdentifier:
   namespace: microsoft.com/aml/samples
-  moduleName: "1 in 1 out"
+  moduleName: "One in one out"
   moduleVersion: 0.0.3
 inputs:
 - name: input1
