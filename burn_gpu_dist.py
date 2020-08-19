@@ -7,8 +7,8 @@ import horovod.torch as hvd
 
 logging.basicConfig(format='[%(asctime)s]\t\t%(message)s', level=logging.DEBUG)
 
-gpu = int(sys.argv[1])
-minutes = int(sys.argv[2])
+gpu = hvd.local_rank()
+minutes = int(sys.argv[1])
 
 hvd.init()
 n_gpu = torch.cuda.device_count()
