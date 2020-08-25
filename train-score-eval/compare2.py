@@ -15,7 +15,7 @@ args = parser.parse_args()
 lines = [f'Model #1: {args.model1}', f'Evaluation #1: {args.eval_result1}', f'Model #2: {args.model2}', f'Evaluation #2: {args.eval_result2}', f'Best model path: {args.best_model}']
 
 pathlib.Path(args.best_model).parent.absolute().mkdir(parents=True, exist_ok=True)
-with open(args.best_model, 'w') as file:
+with open(args.best_mode + '/output', 'w') as file:
     for line in lines:
         print(line)
         file.write(line + "\n")

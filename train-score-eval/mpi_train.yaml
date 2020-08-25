@@ -1,30 +1,35 @@
-moduleIdentifier:
+amlModuleIdentifier:
   namespace: microsoft.com/aml/samples
   moduleName: "MPI Train"
   moduleVersion: 0.0.6
-type: Mpi
+jobType: Mpi
+description: A dummy module to show how to describe MPI module with custom module spec.
 inputs:
 - name: training_data
   type:
   - AnyFile
   - AnyDirectory
-  label: Training data organized in the torchvision format/structure
+  description: Training data organized in the torchvision format/structure
 - name: max_epochs
   type: Integer
-  label: Maximum number of epochs for the training
+  description: Maximum number of epochs for the training
 - name: learning_rate
   type: Float
   default: 0.01
-  label: Learning rate, default is 0.01
+  description: Learning rate, default is 0.01
+- name: run_for_minutes
+  type: Integer
+  default: 5
+  description: How many minutes to run this sample module
 outputs:
 - name: model_output
   type: AnyFile
-  label: The output model (zipped)
+  description: The output model (zipped)
 implementation:
   container:
     amlEnvironment:
       docker:
-        baseImage: mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+        baseImage: mcr.microsoft.com/azureml/base-gpu:openmpi3.1.2-cuda10.0-cudnn7-ubuntu18.04
       python:
         condaDependencies:
           name: project_environment
@@ -36,18 +41,13 @@ implementation:
               - azureml-sdk
               - torch
               - horovod[pytorch]
+              - psutil
+              - GPUtil
     command: [/opt/miniconda/envs/amlbert/bin/python, mpi_train.py]
     args: [
       --training_data, {inputPath: training_data},
       --max_epochs, {inputValue: max_epochs},
       --learning_rate, {inputValue: learning_rate},
       --model_output, {outputPath: model_output},
+      --run_for_minutes, {inputValue: run_for_minutes}
     ]
-runConfig:
-  nodeCount:
-    type: Integer
-    default: 2
-    min: 1
-  processCountPerNode:
-    type: Integer
-    default: 2

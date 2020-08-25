@@ -1,7 +1,8 @@
-moduleIdentifier:
+amlModuleIdentifier:
   namespace: microsoft.com/aml/samples
   moduleName: "Score"
   moduleVersion: 0.0.3
+description: A dummy scoring module
 inputs:
 - name: model_input
   type: AnyFile

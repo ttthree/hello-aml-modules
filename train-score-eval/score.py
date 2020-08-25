@@ -11,7 +11,7 @@ args = parser.parse_args()
 lines = [f'Model path: {args.model_input}', f'Test data path: {args.test_data}', f'Scoring output path: {args.score_output}']
 
 pathlib.Path(args.score_output).parent.absolute().mkdir(parents=True, exist_ok=True)
-with open(args.score_output, 'w') as file:
+with open(args.score_output + '/output', 'w') as file:
     for line in lines:
         print(line)
         file.write(line + "\n")

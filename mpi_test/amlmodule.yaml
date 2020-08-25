@@ -1,8 +1,8 @@
-moduleIdentifier:
+amlModuleIdentifier:
   namespace: microsoft.com/aml
   moduleName: "MPI Test Module"
   moduleVersion: 0.0.5
-type: Mpi
+jobType: Mpi
 inputs:
 - name: train_data
   type:
@@ -28,6 +28,9 @@ inputs:
 - name: gradient_accumulation_steps
   type: Integer
   default: 1
+- name: run_for_minutes
+  type: Integer
+  default: 5
 outputs:
 - name: model
   type: AnyDirectory
@@ -49,6 +52,8 @@ implementation:
               - azureml-sdk
               - torch
               - horovod[pytorch]
+              - psutil
+              - GPUtil
     command: [/opt/miniconda/envs/amlbert/bin/python, mpi_test.py]
     args:
     - --train_data_dir
@@ -67,3 +72,5 @@ implementation:
     - outputPath: model
     - --eval_output_dir
     - outputPath: eval_output
+    - --run_for_minutes
+    - inputValue: run_for_minutes

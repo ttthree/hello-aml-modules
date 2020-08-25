@@ -1,0 +1,12 @@
+.vscode
+.backup
+__pycache__
+.devcontainer
+ipynb_checkpoints
+tests
+*.ipynb
+config.json
+data
+outputs
+.amlignore
+.gitignore

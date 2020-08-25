@@ -1,0 +1,18 @@
+
+amlModuleIdentifier:
+  moduleName: MetricDummyModuleCLI
+  moduleVersion: 0.4
+  namespace: microsoft.com/azureml/samples
+jobType: Basic
+description: "This module probes the logging and environment in python."
+isDeterministic: False
+
+implementation:
+  container:
+    amlEnvironment:
+      docker:
+        baseImage: mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+      python:
+        condaDependenciesFile: ./metrics_dummy_env.yaml
+    command: [python, metrics_dummy.py]
+    args: []

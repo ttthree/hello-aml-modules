@@ -1,0 +1,9 @@
+
+name: dummyenv
+channels:
+  - anaconda
+  - conda-forge
+dependencies:
+  - python=3.6.2
+  - pip:
+    - azureml-defaults

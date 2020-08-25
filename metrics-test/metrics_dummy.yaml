@@ -1,0 +1,23 @@
+amlModuleIdentifier:
+  moduleName: MetricDummyModuleCLI
+  moduleVersion: 2.0
+  namespace: microsoft.com/azureml/samples
+jobType: Basic
+description: "This module probes the logging and environment in python."
+metadata:
+  annotations:
+    tags:
+    - Office
+    contact: ae-aml-1p@microsoft.com
+    helpDocument: https://aka.ms/aml/smartcompose/mock
+isDeterministic: False
+
+implementation:
+  container:
+    amlEnvironment:
+      docker:
+        baseImage: mcr.microsoft.com/azureml/base:latest
+      python:
+        condaDependenciesFile: ./dummy_env.yaml
+    command: [python, metrics_dummy.py]
+    args: []
