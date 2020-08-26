@@ -1,0 +1,9 @@
+channels:
+- defaults
+dependencies:
+- python=3.8.0
+- pip:
+  - --extra-index-url=https://azuremlsdktestpypi.azureedge.net/CLI-SDK-Runners-Validation/15510101
+  - azureml-defaults==0.1.0.15510101
+  - azureml-pipeline-wrapper==0.1.0.15510101
+name: project_environment

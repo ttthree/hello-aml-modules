@@ -1,0 +1,31 @@
+#  This is an auto generated module spec yaml file.
+#  For more details, please refer to https://github.com/Azure/AzureML-Modules/tree/master/specs
+amlModuleIdentifier:
+  moduleName: divide
+  moduleVersion: 0.0.1
+metadata:
+  annotations: {}
+inputs:
+- name: Input dir
+  type: AnyDirectory
+  optional: true
+- name: Str param
+  type: String
+  default: some_string
+  optional: true
+outputs:
+- name: Output dir
+  type: AnyDirectory
+implementation:
+  container:
+    amlEnvironment:
+      python:
+        condaDependenciesFile: conda.yaml
+    command:
+    - python
+    - divide.py
+    args:
+    - [--input_dir, inputPath: Input dir]
+    - [--str_param, inputValue: Str param]
+    - --output_dir
+    - outputPath: Output dir

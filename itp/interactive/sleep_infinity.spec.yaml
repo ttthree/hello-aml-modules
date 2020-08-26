@@ -1,0 +1,35 @@
+#  This is an auto generated module spec yaml file.
+#  For more details, please refer to https://aka.ms/azureml-module-specs
+amlModuleIdentifier:
+  moduleName: sleep_infinity
+  moduleVersion: 0.0.1
+implementation:
+  container:
+    amlEnvironment:
+      python:
+        condaDependenciesFile: conda.yaml
+    args:
+    - [--input_dir, inputPath: Input dir]
+    - [--str_param, inputValue: Str param]
+    - --output_dir
+    - outputPath: Output dir
+    command:
+    - python
+    - sleep_infinity.py
+inputs:
+- name: Input dir
+  type: AnyDirectory
+  argumentName: input_dir
+  optional: true
+- name: Str param
+  type: String
+  argumentName: str_param
+  default: some_string
+  optional: true
+metadata:
+  annotations:
+    codegenBy: dsl.module
+outputs:
+- name: Output dir
+  type: AnyDirectory
+  argumentName: output_dir

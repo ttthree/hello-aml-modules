@@ -1,0 +1,4 @@
+modules:
+-   entry: sleep_infinity.py
+    sourceDirectory: .
+    spec: sleep_infinity.spec.yaml

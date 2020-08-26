@@ -1,0 +1,36 @@
+amlModuleIdentifier:
+  moduleName: burn_gpu
+  moduleVersion: 0.0.1
+metadata:
+  annotations: {}
+jobType: Mpi
+inputs:
+- name: run_for_minutes
+  type: Integer
+outputs:
+- name: output
+  type: AnyDirectory
+implementation:
+  container:
+    amlEnvironment:
+      docker:
+        baseImage: mcr.microsoft.com/azureml/base-gpu:openmpi3.1.2-cuda10.0-cudnn7-ubuntu18.04
+      python:
+        condaDependencies:
+          name: project_environment
+          channels:
+            - defaults
+          dependencies:
+            - python=3.6.8
+            - pip:
+              - azureml-sdk
+              - torch
+              - horovod[pytorch]
+              - psutil
+              - GPUtil
+    command:
+    - python
+    - burn_gpu_dist.py
+    args:
+    - inputValue: run_for_minutes
+    - outputPath: output
