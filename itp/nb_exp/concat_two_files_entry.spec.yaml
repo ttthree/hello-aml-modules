@@ -1,0 +1,42 @@
+#  This is an auto generated module spec yaml file.
+#  For more details, please refer to https://aka.ms/azureml-module-specs
+amlModuleIdentifier:
+  moduleName: concat_two_files
+  moduleVersion: '0.1'
+  namespace: microsoft.com/azureml/samples
+implementation:
+  container:
+    amlEnvironment:
+      python:
+        condaDependenciesFile: conda.yaml
+    args:
+    - --input1
+    - inputPath: input1
+    - --input2
+    - inputPath: input2
+    - [--append_line_break, inputValue: Append line break]
+    - --concatenated
+    - outputPath: concatenated
+    command:
+    - python
+    - concat_two_files_entry.py
+inputs:
+- name: input1
+  type: AnyDirectory
+  argumentName: input1
+- name: input2
+  type: AnyDirectory
+  argumentName: input2
+- name: Append line break
+  type: Boolean
+  argumentName: append_line_break
+  default: false
+  optional: true
+isDeterministic: true
+metadata:
+  annotations:
+    codegenBy: dsl.module
+outputs:
+- name: concatenated
+  type: AnyDirectory
+  argumentName: concatenated

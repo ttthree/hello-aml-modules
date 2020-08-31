@@ -1,0 +1,4 @@
+modules:
+-   entry: concat_two_files_entry.py
+    sourceDirectory: .
+    spec: concat_two_files_entry.spec.yaml
