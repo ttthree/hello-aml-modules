@@ -8,6 +8,7 @@ from azureml.core.run import Run
 
 @dsl.module(name='enter_num_manually', description='Put a number in parameter and this module will convert it to a file', job_type='basic')
 def enter_num_manually(output: OutputDirectory(), num='0'):
+    Path(output).absolute().mkdir(parents=True, exist_ok=True)
     with open(Path(output).resolve() / f'data', 'w') as fout:
         fout.write(num)
 

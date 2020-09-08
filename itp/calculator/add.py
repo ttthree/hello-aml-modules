@@ -18,6 +18,7 @@ def add(left: InputDirectory(), right: InputDirectory(), output: OutputDirectory
     run.log('result', m)
     run.flush()
 
+    Path(output).absolute().mkdir(parents=True, exist_ok=True)
     with open(Path(output).resolve() / f'data', 'w') as fout:
         fout.write(str(m))
 
