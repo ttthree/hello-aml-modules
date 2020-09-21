@@ -16,6 +16,8 @@ def add(left: InputDirectory(), right: InputDirectory(), output: OutputDirectory
     m = l + r
     run = Run.get_context()
     run.log('result', m)
+    run.log('left', l)
+    run.log('right', r)
     run.flush()
 
     Path(output).absolute().mkdir(parents=True, exist_ok=True)
